@@ -1,6 +1,8 @@
 
 /*
  * 
+ * 
+ * 
  * from : Hervé GrabasHervé Grabas
  * 
  * 
@@ -76,7 +78,7 @@ void MICS_VZ_89TE::getVersion(void) {
 bool MICS_VZ_89TE::begin() {
     Serial.print("GO");
 
-    InitI2C0();
+    InitI2C1();
 
     return true;
 }
@@ -105,14 +107,14 @@ void MICS_VZ_89TE::readData(byte reg, byte crc, uint8_t data[]) {
 
     uint8_t i =0;
 
-    I2CSend(_i2caddr,  6, reg, 0,0,0,0, crc );
+    I2CSend( 1, _i2caddr,  6, reg, 0,0,0,0, crc );
 
 
     Serial.println("dayen ifuk ashye3");
 
     
 
-    I2CReceiveN( _i2caddr, reg,  7, data);
+    I2CReceiveN( 1, _i2caddr, reg,  7, data);
     
     Serial.println("dayen ifuk lqraya");
 
